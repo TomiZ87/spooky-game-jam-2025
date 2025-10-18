@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8arvx3x233ts"]
+[gd_scene load_steps=14 format=3 uid="uid://c8arvx3x233ts"]
 
 [ext_resource type="Texture2D" uid="uid://lxs5btke2s17" path="res://assets/sprites/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cvvhe8igd0qo8" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dfi45ebp2s7nc" path="res://scenes/carried_object.gd" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -137,3 +138,9 @@ frame_progress = 0.841953
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_d2wvv")
+
+[node name="CarriedObject" type="Node2D" parent="."]
+position = Vector2(0, -34)
+script = ExtResource("3_qhqgy")
+
+[node name="Sprite2D" type="Sprite2D" parent="CarriedObject"]

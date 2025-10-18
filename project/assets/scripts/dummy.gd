@@ -14,8 +14,34 @@ func _on_body_exited(body):
 	if body.is_in_group("player"):
 		body.nearby_pickupables.erase(self)
 		
-func pickup(who):
-	print("Player tried to pick up", self)
+func pickup():
+	visible = false
+	set_physics_process(false)
+	
+	# Disable collisions
+	$CollisionShape2D.disabled = true
+	$InteractionArea/CollisionShape2D.disabled = true
+	
+	# Don't trigger signals
+	$InteractionArea.monitoring = false
+	$InteractionArea.monitorable = false
+
+	
+func put_down(player):
+	visible = true
+	set_physics_process(true)
+	$CollisionShape2D.disabled = false
+	$InteractionArea/CollisionShape2D.disabled = false
+	
+	# Don't trigger signals
+	$InteractionArea.monitoring = true
+	$InteractionArea.monitorable = true
+	
+	var offset = 30 if not player.sprite.flip_h else -30
+	position.x = player.position.x + offset
+	position.y = player.position.y
+
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

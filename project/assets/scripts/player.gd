@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 @onready var sprite = $AnimatedSprite2D
+@onready var carried_object = $CarriedObject
 
 var nearby_pickupables: Array = []
 var current_pickupable: Node = null
+var carrying = false
 
 func _process(delta):
 	handle_pickup()
@@ -37,8 +39,17 @@ func handle_pickup():
 		current_pickupable = null
 
 	# Handle interaction input
-	if Input.is_action_just_pressed("player_pick_up_put_down") and current_pickupable:
-		current_pickupable.pickup(self)
+	if Input.is_action_just_pressed("player_pick_up_put_down"):
+		if not carrying and current_pickupable:
+			current_pickupable.pickup()
+			carrying = true
+			carried_object.carry(current_pickupable)
+			current_pickupable = null
+		elif carrying:
+			carried_object.drop(self)
+			carrying = false
+		
+		
 
 func get_closest_interactable():
 	var closest = null
