@@ -14,3 +14,8 @@ config/name="Cosmic Convenience"
 run/main_scene="uid://dmpeto3yqxjvm"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+pathfind_placeholder=""
+npc=""

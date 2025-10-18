@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=17 format=4 uid="uid://dmpeto3yqxjvm"]
 
 [ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="Script" uid="uid://cx148b5lkvltc" path="res://scenes/ground.gd" id="2_14vil"]
-[ext_resource type="Script" uid="uid://c1yoqej1h8no6" path="res://scenes/character_body_2d.gd" id="2_85yof"]
-[ext_resource type="Texture2D" uid="uid://c6xe8iui8eytd" path="res://icon.svg" id="2_ffxv4"]
-[ext_resource type="Texture2D" uid="uid://cigop2noguyi8" path="res://assets/sprites/images.steamusercontent.jpg" id="5_jxe34"]
+[ext_resource type="PackedScene" uid="uid://cs8lsnfnmuro5" path="res://scenes/pathfinding_goal.tscn" id="4_jn645"]
+[ext_resource type="Script" uid="uid://dkdc6fo2d5gtm" path="res://scenes/door.gd" id="5_qvc4m"]
+[ext_resource type="Texture2D" uid="uid://dlqbrc5dfxiyt" path="res://assets/sprites/images.jpg" id="6_7dqbv"]
+[ext_resource type="Script" uid="uid://bayxkj76krorl" path="res://scenes/npc.gd" id="7_ybpoa"]
+[ext_resource type="Texture2D" uid="uid://bdwsq1st6t5li" path="res://assets/sprites/open-chest-wooden-y1Mkxy5-600.jpg" id="8_qtoah"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85yof"]
 texture = ExtResource("1_36trf")
@@ -163,8 +165,7 @@ texture = ExtResource("1_36trf")
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_ybpoa")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eom3m"]
-size = Vector2(39.999996, 39.999992)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvc4m"]
 
 [node name="Room" type="Node2D"]
 
@@ -177,38 +178,46 @@ tile_set = SubResource("TileSet_14vil")
 script = ExtResource("2_14vil")
 
 [node name="floor" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD7//n/AAADAAMAAAD7//r/AAADAAMAAAD7//v/AAADAAMAAAD7//z/AAADAAMAAAD7//3/AAADAAMAAAD7//7/AAADAAMAAAD7////AAADAAMAAAD7/wAAAAADAAMAAAD7/wEAAAADAAMAAAD7/wIAAAADAAMAAAD7/wMAAAADAAMAAAD7/wQAAAADAAMAAAD7/wUAAAADAAMAAAD7/wYAAAADAAMAAAD7/wcAAAADAAMAAAD8//n/AAADAAMAAAD8//r/AAADAAMAAAD8//v/AAADAAMAAAD8//z/AAADAAMAAAD8//3/AAADAAMAAAD8//7/AAADAAMAAAD8////AAADAAMAAAD8/wAAAAADAAMAAAD8/wEAAAADAAMAAAD8/wIAAAADAAMAAAD8/wMAAAADAAMAAAD8/wQAAAADAAMAAAD8/wUAAAADAAMAAAD8/wYAAAADAAMAAAD8/wcAAAADAAMAAAD9//n/AAADAAMAAAD9//r/AAADAAMAAAD+//n/AAADAAMAAAD+//r/AAADAAMAAAD///n/AAADAAMAAAD///r/AAADAAMAAAAAAPn/AAADAAMAAAAAAPr/AAADAAMAAAABAPn/AAADAAMAAAABAPr/AAADAAMAAAACAPn/AAADAAMAAAACAPr/AAADAAMAAAADAPn/AAADAAMAAAADAPr/AAADAAMAAAAEAPn/AAADAAMAAAAEAPr/AAADAAMAAAAFAPn/AAADAAMAAAAFAPr/AAADAAMAAAAGAPn/AAADAAMAAAAGAPr/AAADAAMAAAAHAPn/AAADAAMAAAAHAPr/AAADAAMAAAAIAPn/AAADAAMAAAAIAPr/AAADAAMAAAAJAPn/AAADAAMAAAAJAPr/AAADAAMAAAAIAPv/AAADAAMAAAAIAPz/AAADAAMAAAAIAP3/AAADAAMAAAAIAP7/AAADAAMAAAAIAP//AAADAAMAAAAIAAAAAAADAAMAAAAIAAEAAAADAAMAAAAIAAIAAAADAAMAAAAIAAMAAAADAAMAAAAIAAQAAAADAAMAAAAIAAUAAAADAAMAAAAIAAYAAAADAAMAAAAIAAcAAAADAAMAAAAJAPv/AAADAAMAAAAJAPz/AAADAAMAAAAJAP3/AAADAAMAAAAJAP7/AAADAAMAAAAJAP//AAADAAMAAAAJAAAAAAADAAMAAAAJAAEAAAADAAMAAAAJAAIAAAADAAMAAAAJAAMAAAADAAMAAAAJAAQAAAADAAMAAAAJAAUAAAADAAMAAAAJAAYAAAADAAMAAAAJAAcAAAADAAMAAAD9/wYAAAADAAMAAAD9/wcAAAADAAMAAAD+/wYAAAADAAMAAAD+/wcAAAADAAMAAAD//wYAAAADAAMAAAD//wcAAAADAAMAAAAAAAYAAAADAAMAAAAAAAcAAAADAAMAAAABAAYAAAADAAMAAAABAAcAAAADAAMAAAACAAYAAAADAAMAAAACAAcAAAADAAMAAAADAAYAAAADAAMAAAADAAcAAAADAAMAAAAEAAYAAAADAAMAAAAEAAcAAAADAAMAAAAFAAYAAAADAAMAAAAFAAcAAAADAAMAAAAGAAYAAAADAAMAAAAGAAcAAAADAAMAAAAHAAYAAAADAAMAAAAHAAcAAAADAAMAAAA=")
+tile_map_data = PackedByteArray("AAD7//n/AAADAAMAAAD7//r/AAADAAMAAAD7//v/AAADAAMAAAD7//z/AAADAAMAAAD7//3/AAADAAMAAAD7//7/AAADAAMAAAD7////AAADAAMAAAD7/wAAAAADAAMAAAD7/wEAAAADAAMAAAD7/wIAAAADAAMAAAD7/wMAAAADAAMAAAD7/wQAAAADAAMAAAD7/wUAAAADAAMAAAD7/wYAAAADAAMAAAD7/wcAAAADAAMAAAD8//n/AAADAAMAAAD8//r/AAADAAMAAAD8//v/AAADAAMAAAD8//z/AAADAAMAAAD8//3/AAADAAMAAAD8//7/AAADAAMAAAD8////AAADAAMAAAD8/wAAAAADAAMAAAD8/wEAAAADAAMAAAD8/wIAAAADAAMAAAD8/wMAAAADAAMAAAD8/wQAAAADAAMAAAD8/wUAAAADAAMAAAD8/wYAAAADAAMAAAD8/wcAAAADAAMAAAD9//n/AAADAAMAAAD9//r/AAADAAMAAAD+//n/AAADAAMAAAD+//r/AAADAAMAAAD///n/AAADAAMAAAD///r/AAADAAMAAAAAAPn/AAADAAMAAAAAAPr/AAADAAMAAAABAPn/AAADAAMAAAABAPr/AAADAAMAAAACAPn/AAADAAMAAAACAPr/AAADAAMAAAADAPn/AAADAAMAAAADAPr/AAADAAMAAAAEAPn/AAADAAMAAAAEAPr/AAADAAMAAAAFAPn/AAADAAMAAAAFAPr/AAADAAMAAAAGAPn/AAADAAMAAAAGAPr/AAADAAMAAAAHAPn/AAADAAMAAAAHAPr/AAADAAMAAAAIAPn/AAADAAMAAAAIAPr/AAADAAMAAAAJAPn/AAADAAMAAAAJAPr/AAADAAMAAAAIAPv/AAADAAMAAAAIAPz/AAADAAMAAAAIAP3/AAADAAMAAAAIAP7/AAADAAMAAAAIAP//AAADAAMAAAAIAAAAAAADAAMAAAAIAAEAAAADAAMAAAAIAAIAAAADAAMAAAAIAAMAAAADAAMAAAAIAAQAAAADAAMAAAAIAAUAAAADAAMAAAAIAAYAAAADAAMAAAAIAAcAAAADAAMAAAAJAPv/AAADAAMAAAAJAPz/AAADAAMAAAAJAP3/AAADAAMAAAAJAP7/AAADAAMAAAAJAP//AAADAAMAAAAJAAAAAAADAAMAAAAJAAEAAAADAAMAAAAJAAIAAAADAAMAAAAJAAMAAAADAAMAAAAJAAQAAAADAAMAAAAJAAUAAAADAAMAAAAJAAYAAAADAAMAAAAJAAcAAAADAAMAAAD9/wYAAAADAAMAAAD9/wcAAAADAAMAAAD+/wYAAAADAAMAAAD+/wcAAAADAAMAAAD//wYAAAADAAMAAAD//wcAAAADAAMAAAAAAAYAAAADAAMAAAAAAAcAAAADAAMAAAABAAYAAAADAAMAAAABAAcAAAADAAMAAAACAAYAAAADAAMAAAACAAcAAAADAAMAAAADAAYAAAADAAMAAAADAAcAAAADAAMAAAAEAAYAAAADAAMAAAAEAAcAAAADAAMAAAAFAAYAAAADAAMAAAAFAAcAAAADAAMAAAAGAAYAAAADAAMAAAAGAAcAAAADAAMAAAAHAAYAAAADAAMAAAAHAAcAAAADAAMAAAD1/wAAAAADAAMAAAD1/wEAAAADAAMAAAD2/wAAAAADAAMAAAD2/wEAAAADAAMAAAD3/wAAAAADAAMAAAD3/wEAAAADAAMAAAD4/wAAAAADAAMAAAD4/wEAAAADAAMAAAD5/wAAAAADAAMAAAD5/wEAAAADAAMAAAD6/wAAAAADAAMAAAD6/wEAAAADAAMAAAA=")
 tile_set = SubResource("TileSet_qtoah")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(-53, -97)
-scale = Vector2(0.4, 0.4)
-script = ExtResource("2_85yof")
+[node name="pathfinding_goal" parent="." instance=ExtResource("4_jn645")]
+position = Vector2(30, -93)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-4.827976e-06, 3.7550926e-06)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_ffxv4")
+[node name="chest" type="RigidBody2D" parent="."]
+position = Vector2(141, 37)
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(0.9999998, 0.9999998)
-shape = SubResource("RectangleShape2D_eom3m")
+[node name="Sprite2D" type="Sprite2D" parent="chest"]
+position = Vector2(1.9999994, -6.9999995)
+scale = Vector2(0.028, 0.028)
+texture = ExtResource("8_qtoah")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
-path_desired_distance = 5.0
-target_desired_distance = 5.0
-path_postprocessing = 1
-avoidance_enabled = true
-debug_enabled = true
-debug_use_custom = true
-debug_path_custom_color = Color(0, 0, 0, 1)
+[node name="Area2D" type="Area2D" parent="chest"]
 
-[node name="pathfinding_goal" type="Node2D" parent="."]
-position = Vector2(148, 115)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chest/Area2D"]
+position = Vector2(2, -7)
+shape = SubResource("RectangleShape2D_qvc4m")
 
-[node name="Sprite2D" type="Sprite2D" parent="pathfinding_goal"]
-position = Vector2(-4.7683716e-07, -1.1920929e-07)
-scale = Vector2(0.0381526, 0.03815259)
-texture = ExtResource("5_jxe34")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="chest"]
+position = Vector2(2, -5)
+shape = SubResource("RectangleShape2D_qvc4m")
 
-[connection signal="velocity_computed" from="CharacterBody2D/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
+[node name="door" type="Node2D" parent="."]
+position = Vector2(-169, 16)
+script = ExtResource("5_qvc4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="door"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_7dqbv")
+
+[node name="npc_spawn" type="Node2D" parent="."]
+script = ExtResource("7_ybpoa")
+
+[node name="Timer" type="Timer" parent="npc_spawn"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="npc_spawn/Timer" to="npc_spawn" method="_on_timer_timeout"]

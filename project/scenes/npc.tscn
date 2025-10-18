@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkb1sakaligtk"]
+
+[ext_resource type="Script" uid="uid://c1yoqej1h8no6" path="res://scenes/character_body_2d.gd" id="1_rv78h"]
+[ext_resource type="Texture2D" uid="uid://cfg3nppulbhiu" path="res://assets/sprites/Monster.png" id="2_7n8xq"]
+[ext_resource type="Script" uid="uid://dtnw7qyetle66" path="res://scenes/npc_hitbox.gd" id="3_4wlns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eom3m"]
+size = Vector2(39.999996, 39.999992)
+
+[node name="NPC" type="CharacterBody2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_rv78h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.827976e-06, 3.7550926e-06)
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_7n8xq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_eom3m")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 0, 0, 1)
+
+[node name="npc_hitbox" type="Area2D" parent="." groups=["npc"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_4wlns")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="npc_hitbox"]
+position = Vector2(9.999999, 12.499999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_eom3m")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="area_entered" from="npc_hitbox" to="." method="_on_npc_hitbox_area_entered"]
