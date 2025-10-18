@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dop628qw3t87d"]
+
+[ext_resource type="Script" uid="uid://yhpq3cte2d3o" path="res://assets/scripts/dummy.gd" id="1_k5f3b"]
+[ext_resource type="Texture2D" uid="uid://ed46x5ovby47" path="res://assets/sprites/dummy.png" id="1_kre8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5f3b"]
+size = Vector2(22, 7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m2ry"]
+radius = 14.0
+height = 36.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_k5f3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kre8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_k5f3b")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6m2ry")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_body_exited"]
