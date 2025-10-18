@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://05hihb3qehr3"]
+[gd_scene load_steps=6 format=4 uid="uid://05hihb3qehr3"]
 
-[ext_resource type="Texture2D" uid="uid://cjrdmrrxe3s01" path="res://assets/sprites/shelf.png" id="1_eyi4x"]
+[ext_resource type="Texture2D" uid="uid://b2ndlxuujpa8t" path="res://assets/sprites/shelf.png" id="1_eyi4x"]
+[ext_resource type="Script" uid="uid://bfuvuu1yx5uwa" path="res://scenes/shelf.gd" id="1_xj574"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xj574"]
 texture = ExtResource("1_eyi4x")
@@ -27,8 +28,18 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xj574")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyi4x"]
+size = Vector2(96, 128)
+
 [node name="Shelf" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAMAAAA=")
 tile_set = SubResource("TileSet_00mi8")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_xj574")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 64)
+shape = SubResource("RectangleShape2D_eyi4x")
