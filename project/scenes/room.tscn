@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b0vk8hny5xx21" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://05hihb3qehr3" path="res://scenes/shelf.tscn" id="2_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -56,6 +57,9 @@ tile_set = SubResource("TileSet_14vil")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 112)
 zoom = Vector2(2, 2)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(196, 175)
 
 [node name="Shelf_1" parent="." instance=ExtResource("2_ffxv4")]
 position = Vector2(64, 32)
