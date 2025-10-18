@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=6 format=4 uid="uid://dmpeto3yqxjvm"]
 
-[ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
+[ext_resource type="Texture2D" uid="uid://b0vk8hny5xx21" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
+[ext_resource type="PackedScene" uid="uid://05hihb3qehr3" path="res://scenes/shelf.tscn" id="2_ffxv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -55,3 +56,15 @@ tile_set = SubResource("TileSet_14vil")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 112)
 zoom = Vector2(2, 2)
+
+[node name="Shelf_1" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(64, 32)
+
+[node name="Shelf_2" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(192, 32)
+
+[node name="Shelf_3" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(320, 32)
+
+[node name="Shelf_4" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(448, 32)
