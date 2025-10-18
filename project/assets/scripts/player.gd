@@ -10,25 +10,25 @@ var carrying = false
 
 func _process(delta):
 	handle_pickup()
-	
+
 func _physics_process(delta: float) -> void:
 	handle_movement_input()
 	move_and_slide()
-	
+
 func handle_movement_input():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.x > 0:
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
-		
+
 	if direction.x == 0 and direction.y == 0:
 		sprite.play("idle_right")
 	else:
 		sprite.play("walk_right")
-		
+
 	velocity = direction * SPEED
-	
+
 func handle_pickup():
 	# Clean up if any interactables were deleted
 	nearby_pickupables = nearby_pickupables.filter(func(i): return is_instance_valid(i))
@@ -48,8 +48,8 @@ func handle_pickup():
 		elif carrying:
 			carried_object.drop(self)
 			carrying = false
-		
-		
+
+
 
 func get_closest_interactable():
 	var closest = null

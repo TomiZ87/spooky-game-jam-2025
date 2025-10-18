@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=8 format=4 uid="uid://dmpeto3yqxjvm"]
 
 [ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
-[ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="3_85yof"]
-[ext_resource type="PackedScene" uid="uid://dop628qw3t87d" path="res://scenes/dummy.tscn" id="3_85yof"]
-[ext_resource type="PackedScene" uid="uid://05hihb3qehr3" path="res://scenes/shelf.tscn" id="2_ffxv4"]
+[ext_resource type="PackedScene" path="res://scenes/dummy.tscn" id="3_85yof"]
+[ext_resource type="PackedScene" uid="uid://05hihb3qehr3" path="res://scenes/shelf.tscn" id="4_14vil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -60,24 +59,24 @@ tile_set = SubResource("TileSet_14vil")
 position = Vector2(288, 112)
 zoom = Vector2(2, 2)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_85yof")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
+z_index = 999
 position = Vector2(196, 175)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
-position = Vector2(330, 138)
+z_index = 999
+position = Vector2(450, 170)
 
-[node name="shelves" type="Node" parent="."]
+[node name="Shelves" type="Node" parent="."]
 
-[node name="Shelf_1" parent="shelves" instance=ExtResource("2_ffxv4")]
+[node name="Shelf_1" parent="Shelves" instance=ExtResource("4_14vil")]
 position = Vector2(64, 32)
 
-[node name="Shelf_2" parent="shelves" instance=ExtResource("2_ffxv4")]
+[node name="Shelf_2" parent="Shelves" instance=ExtResource("4_14vil")]
 position = Vector2(192, 32)
 
-[node name="Shelf_3" parent="shelves" instance=ExtResource("2_ffxv4")]
+[node name="Shelf_3" parent="Shelves" instance=ExtResource("4_14vil")]
 position = Vector2(320, 32)
 
-[node name="Shelf_4" parent="shelves" instance=ExtResource("2_ffxv4")]
+[node name="Shelf_4" parent="Shelves" instance=ExtResource("4_14vil")]
 position = Vector2(448, 32)
-
-
