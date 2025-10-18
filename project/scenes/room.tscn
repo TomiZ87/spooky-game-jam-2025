@@ -55,3 +55,17 @@ tile_set = SubResource("TileSet_14vil")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 112)
 zoom = Vector2(4, 4)
+
+[node name="CashRegister" type="Node2D" parent="."]
+position = Vector2(288, 201)
+
+[node name="ColorRect" type="ColorRect" parent="CashRegister"]
+offset_top = -9.0
+offset_right = 32.0
+offset_bottom = 23.0
+
+[node name="Area2D" type="Area2D" parent="CashRegister"]
+position = Vector2(0, -9)
+
+[node name="RegisterArea" type="CollisionPolygon2D" parent="CashRegister/Area2D"]
+polygon = PackedVector2Array(0, 32, -32, 64, 64, 64, 32, 32)
