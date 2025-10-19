@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5lm8nyiwac01"]
+
+[ext_resource type="Texture2D" uid="uid://brjbkwrpwqthk" path="res://assets/sprites/desk.png" id="1_x6irj"]
+[ext_resource type="Texture2D" uid="uid://0j0fvjprrrw4" path="res://assets/sprites/cash_register.png" id="2_osk2g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osk2g"]
+texture = ExtResource("1_x6irj")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_wwbbv"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_osk2g")
+
+[node name="CashRegistry" type="Node2D"]
+z_index = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_wwbbv")
+
+[node name="CashRegister" type="Node2D" parent="."]
+position = Vector2(93, 9)
+
+[node name="CashRegister" type="Sprite2D" parent="CashRegister"]
+position = Vector2(-26, -4)
+texture = ExtResource("2_osk2g")
+
+[node name="Area2D" type="Area2D" parent="CashRegister"]
+position = Vector2(0, -9)
+
+[node name="RegisterArea" type="CollisionPolygon2D" parent="CashRegister/Area2D"]
+position = Vector2(-36, -20)
+polygon = PackedVector2Array(-11, 32, -11, 83, 32, 83, 32, 32)

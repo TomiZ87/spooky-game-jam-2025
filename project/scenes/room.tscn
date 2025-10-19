@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=8 format=4 uid="uid://dmpeto3yqxjvm"]
 
 [ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://dop628qw3t87d" path="res://scenes/dummy.tscn" id="3_85yof"]
-[ext_resource type="Texture2D" uid="uid://brjbkwrpwqthk" path="res://assets/sprites/desk.png" id="4_jxe34"]
-[ext_resource type="Texture2D" uid="uid://0j0fvjprrrw4" path="res://assets/sprites/cash_register.png" id="5_jn645"]
+[ext_resource type="PackedScene" uid="uid://c5lm8nyiwac01" path="res://scenes/cash_registry.tscn" id="4_jxe34"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -50,18 +49,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ffxv4")
 sources/1 = SubResource("TileSetScenesCollectionSource_85yof")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxe34"]
-texture = ExtResource("4_jxe34")
-texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jxe34"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_jxe34")
-
 [node name="Room" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -73,29 +60,11 @@ position = Vector2(288, 112)
 zoom = Vector2(2, 2)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
-z_index = 1
+z_index = 3
 position = Vector2(196, 175)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
 position = Vector2(330, 138)
 
-[node name="CashRegister" type="Node2D" parent="."]
-z_index = 3
-position = Vector2(343, 201)
-
-[node name="CashRegister" type="Sprite2D" parent="CashRegister"]
-position = Vector2(-22, -3)
-texture = ExtResource("5_jn645")
-
-[node name="Area2D" type="Area2D" parent="CashRegister"]
-position = Vector2(0, -9)
-
-[node name="RegisterArea" type="CollisionPolygon2D" parent="CashRegister/Area2D"]
-position = Vector2(-36, -20)
-polygon = PackedVector2Array(-11, 32, -11, 83, 32, 83, 32, 32)
-
-[node name="FurnitureTileMapLayer" type="TileMapLayer" parent="."]
-z_index = 1
-tile_map_data = PackedByteArray("AAAHAAYAAAABAAAAAAAIAAYAAAACAAAAAAAJAAYAAAACAAAAAAAKAAYAAAACAAAAAAALAAYAAAACAAAAAAAMAAYAAAADAAAAAAAHAAcAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_jxe34")
-use_kinematic_bodies = true
+[node name="CashRegistry" parent="." instance=ExtResource("4_jxe34")]
+position = Vector2(250, 192)
