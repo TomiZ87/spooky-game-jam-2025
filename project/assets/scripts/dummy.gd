@@ -37,7 +37,7 @@ func put_down(player):
 	$InteractionArea.monitoring = true
 	$InteractionArea.monitorable = true
 
-	var offset = 30 if not player.sprite.flip_h else -30
+	var offset = 20 if not player.sprite.flip_h else -20
 	position.x = player.position.x + offset
 	position.y = player.position.y
 

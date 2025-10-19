@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://05hihb3qehr3"]
 
 [ext_resource type="Texture2D" uid="uid://b2ndlxuujpa8t" path="res://assets/sprites/shelf.png" id="1_eyi4x"]
-[ext_resource type="Script" uid="uid://bfuvuu1yx5uwa" path="res://scenes/shelf.gd" id="1_xj574"]
+[ext_resource type="Script" uid="uid://odqn3x2x32ek" path="res://assets/scripts/shelf.gd" id="2_xj574"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xj574"]
 texture = ExtResource("1_eyi4x")
@@ -29,7 +29,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xj574")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyi4x"]
-size = Vector2(96, 128)
+size = Vector2(80, 128)
 
 [node name="Shelf" type="Node2D"]
 
@@ -38,7 +38,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAI
 tile_set = SubResource("TileSet_00mi8")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_xj574")
+script = ExtResource("2_xj574")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(32, 64)
