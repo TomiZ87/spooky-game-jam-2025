@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dve6b1lp22vat"]
+
+[ext_resource type="Texture2D" uid="uid://cm08olidce3s" path="res://assets/sprites/timer_gray.png" id="1_clyxh"]
+[ext_resource type="Texture2D" uid="uid://dmiwyfypw5e3c" path="res://assets/sprites/timer_red.png" id="2_82ka4"]
+[ext_resource type="Script" uid="uid://dvkfyavbbb7ep" path="res://texture_progress_bar.gd" id="3_4h7ao"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_left = 278.0
+offset_top = 177.0
+offset_right = 292.0
+offset_bottom = 191.0
+max_value = 10.0
+fill_mode = 5
+texture_under = ExtResource("1_clyxh")
+texture_progress = ExtResource("2_82ka4")
+script = ExtResource("3_4h7ao")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
