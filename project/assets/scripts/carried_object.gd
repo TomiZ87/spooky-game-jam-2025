@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
+
 func carry(obj):
 	var obj_sprite = obj.get_node_or_null("Sprite2D")
 	object = obj
@@ -17,7 +17,7 @@ func carry(obj):
 		sprite.texture = obj_sprite.texture
 	else:
 		push_warning("Picked up object sprite not found")
-	
+
 func drop(player):
 	object.put_down(player)
 	object = null
