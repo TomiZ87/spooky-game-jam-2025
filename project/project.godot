@@ -24,6 +24,10 @@ window/stretch/mode="viewport"
 [global_group]
 
 player="global reference (group) to player"
+npc=""
+pathfind_placeholder=""
+inter_area=""
+chest_area=""
 
 [input]
 

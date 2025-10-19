@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs8lsnfnmuro5"]
+
+[ext_resource type="Script" uid="uid://ch850oeckbx8c" path="res://assets/scripts/pathfinding_goal.gd" id="1_yaw10"]
+[ext_resource type="Texture2D" uid="uid://cigop2noguyi8" path="res://assets/sprites/images.steamusercontent.jpg" id="2_enss4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk5fv"]
+
+[sub_resource type="GDScript" id="GDScript_eom3m"]
+script/source = "extends Area2D
+#pathfind_hitbox
+#signal pick
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	#print(global_position)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="pathfinding_goal" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_yaw10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.7683716e-07, -1.1920929e-07)
+scale = Vector2(0.0381526, 0.03815259)
+texture = ExtResource("2_enss4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tk5fv")
+
+[node name="hitbox" type="Area2D" parent="." groups=["pathfind_placeholder"]]
+collision_layer = 2
+script = SubResource("GDScript_eom3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_tk5fv")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

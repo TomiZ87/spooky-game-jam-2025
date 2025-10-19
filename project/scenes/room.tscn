@@ -1,15 +1,32 @@
-[gd_scene load_steps=8 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=12 format=4 uid="uid://dmpeto3yqxjvm"]
 
 [ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://dop628qw3t87d" path="res://scenes/dummy.tscn" id="3_85yof"]
+[ext_resource type="Script" uid="uid://dkdc6fo2d5gtm" path="res://assets/scripts/door.gd" id="4_jn645"]
+[ext_resource type="PackedScene" uid="uid://bkb1sakaligtk" path="res://scenes/npc.tscn" id="4_jxe34"]
+[ext_resource type="PackedScene" uid="uid://dtwbyyhc4c4yt" path="res://scenes/chest.tscn" id="6_jn645"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qvc4m"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7dqbv"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
 [ext_resource type="PackedScene" uid="uid://05hihb3qehr3" path="res://scenes/shelf.tscn" id="4_14vil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_qvc4m")
 3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dqbv")
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:0/0 = 0
@@ -46,6 +63,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_14vil"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_ffxv4")
 sources/1 = SubResource("TileSetScenesCollectionSource_85yof")
 
@@ -60,6 +78,29 @@ position = Vector2(288, 112)
 zoom = Vector2(2, 2)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(86, 168)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
+position = Vector2(519, 201)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_85yof")]
+position = Vector2(504, 78)
+
+[node name="npc_spawn" type="Node2D" parent="."]
+script = ExtResource("4_jn645")
+
+[node name="Timer" type="Timer" parent="npc_spawn"]
+wait_time = 5.0
+autostart = true
+
+[node name="NPC" parent="." instance=ExtResource("4_jxe34")]
+position = Vector2(34.00003, 21.000008)
+
+[node name="NPC2" parent="." instance=ExtResource("4_jxe34")]
+position = Vector2(37, 70)
+
+[node name="chest" parent="." instance=ExtResource("6_jn645")]
+position = Vector2(25, 242)
 z_index = 999
 position = Vector2(196, 175)
 

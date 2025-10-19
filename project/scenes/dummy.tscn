@@ -20,7 +20,7 @@ texture = ExtResource("1_kre8v")
 position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_k5f3b")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." groups=["inter_area"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, 8)
