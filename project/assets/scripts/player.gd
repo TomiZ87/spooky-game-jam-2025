@@ -6,29 +6,30 @@ const SPEED = 150.0
 
 var nearby_pickupables: Array = []
 var current_pickupable: Node = null
+var nearby_shelf: Node = null
 var carrying = false
 
 func _process(delta):
 	handle_pickup()
-	
+
 func _physics_process(delta: float) -> void:
 	handle_movement_input()
 	move_and_slide()
-	
+
 func handle_movement_input():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.x > 0:
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
-		
+
 	if direction.x == 0 and direction.y == 0:
 		sprite.play("idle_right")
 	else:
 		sprite.play("walk_right")
-		
+
 	velocity = direction * SPEED
-	
+
 func handle_pickup():
 	# Clean up if any interactables were deleted
 	nearby_pickupables = nearby_pickupables.filter(func(i): return is_instance_valid(i))
@@ -40,16 +41,30 @@ func handle_pickup():
 
 	# Handle interaction input
 	if Input.is_action_just_pressed("player_pick_up_put_down"):
-		if not carrying and current_pickupable:
-			current_pickupable.pickup()
-			carrying = true
-			carried_object.carry(current_pickupable)
-			current_pickupable = null
+		if not carrying:
+			if nearby_shelf and nearby_shelf.stored_object:
+				var retrieved = nearby_shelf.retrieve_object()
+				if retrieved:
+					retrieved.pickup()
+					carrying = true
+					carried_object.carry(retrieved)
+			elif current_pickupable:
+				current_pickupable.pickup()
+				carrying = true
+				carried_object.carry(current_pickupable)
+				current_pickupable = null
+		
 		elif carrying:
-			carried_object.drop(self)
-			carrying = false
-		
-		
+			if nearby_shelf:
+				# Player is near a shelf → store the carried object
+				nearby_shelf.store_object(carried_object.object)
+				carried_object.object = null
+				carried_object.sprite.texture = null
+				carrying = false
+			else:
+				# Normal drop to ground
+				carried_object.drop(self)
+				carrying = false
 
 func get_closest_interactable():
 	var closest = null
