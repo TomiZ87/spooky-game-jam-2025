@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsetsh05u2ieu"]
+
+[ext_resource type="Script" uid="uid://j7ggwp2g6yno" path="res://assets/scripts/satisfaction_bar.gd" id="1_5es07"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c54w1"]
+font_size = 20
+outline_size = 4
+outline_color = Color(0.051970966, 0.05197096, 0.05197095, 1)
+
+[sub_resource type="GDScript" id="GDScript_yq7ne"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 30.0
+offset_right = 309.0
+offset_bottom = 90.0
+script = ExtResource("1_5es07")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -25.0
+offset_right = 272.0
+offset_bottom = 3.0
+text = "Customer Satisfaction: 100%"
+label_settings = SubResource("LabelSettings_c54w1")
+script = SubResource("GDScript_yq7ne")

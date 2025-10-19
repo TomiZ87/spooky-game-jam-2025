@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=8 format=4 uid="uid://dmpeto3yqxjvm"]
 
-[ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
+[ext_resource type="Texture2D" uid="uid://b0vk8hny5xx21" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
 [ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://dop628qw3t87d" path="res://scenes/dummy.tscn" id="3_85yof"]
+[ext_resource type="PackedScene" uid="uid://dsetsh05u2ieu" path="res://scenes/customer_satisfaction.tscn" id="4_14vil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -63,3 +64,17 @@ position = Vector2(196, 175)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
 position = Vector2(330, 138)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("4_14vil")]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.004
+anchor_right = 0.07
+anchor_bottom = 0.009000001
+offset_left = 6.4399996
+offset_top = 27.119999
+offset_right = 165.4
+offset_bottom = 54.52
