@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://dmpeto3yqxjvm"]
+[gd_scene load_steps=7 format=4 uid="uid://dmpeto3yqxjvm"]
 
 [ext_resource type="Texture2D" uid="uid://dlyv2cbq4menu" path="res://assets/sprites/roomTileSet.png" id="1_36trf"]
+[ext_resource type="PackedScene" uid="uid://c8arvx3x233ts" path="res://scenes/player.tscn" id="2_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://dop628qw3t87d" path="res://scenes/dummy.tscn" id="3_85yof"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffxv4"]
 texture = ExtResource("1_36trf")
@@ -54,7 +56,13 @@ tile_set = SubResource("TileSet_14vil")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 112)
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(196, 175)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
+position = Vector2(330, 138)
 
 [node name="CashRegister" type="Node2D" parent="."]
 position = Vector2(288, 201)
