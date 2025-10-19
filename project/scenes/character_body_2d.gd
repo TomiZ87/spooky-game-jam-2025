@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-#@onready var goal = get_node("res://scenes/pathfinding_goal.tscn")
 @onready var chest = get_tree().get_first_node_in_group("chest_area")
 @onready var path_box = get_tree().get_first_node_in_group("pathfind_placeholder")
 @onready var door = get_tree().get_first_node_in_group("door")
-#@onready var door_exit = get_node("door_exit").get_first_node_in_group("door")
 var movement_speed = 150
 var picked_up = ""
 var checked_out = false
@@ -22,6 +20,11 @@ func _process(delta: float) -> void:
 		navigation_agent_2d.target_position = door.global_position
 	else:
 		navigation_agent_2d.target_position = path_box.global_position
+	
+	#if picked_up:
+	#	var test = picked_up.instantiate()
+	#	.global_position = self.global_position
+	#	add_child(test)
 	
 	var current_agent_pos = global_position
 	var next_path_position = navigation_agent_2d.get_next_path_position()

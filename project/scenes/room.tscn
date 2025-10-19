@@ -190,7 +190,7 @@ position = Vector2(-63, -80)
 position = Vector2(-63, 89)
 
 [node name="chest" parent="." instance=ExtResource("4_qvc4m")]
-position = Vector2(141, 37)
+position = Vector2(-23, -90)
 
 [node name="door" type="Node2D" parent="." groups=["door"]]
 position = Vector2(-169, 16)
@@ -211,7 +211,7 @@ shape = SubResource("RectangleShape2D_7dqbv")
 script = ExtResource("7_ybpoa")
 
 [node name="Timer" type="Timer" parent="npc_spawn"]
-wait_time = 15.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="npc_spawn/Timer" to="npc_spawn" method="_on_timer_timeout"]

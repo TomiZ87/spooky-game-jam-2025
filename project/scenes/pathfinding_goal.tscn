@@ -21,10 +21,9 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="pathfinding_goal" type="RigidBody2D"]
+[node name="pathfinding_goal" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 2
-gravity_scale = 0.0
 script = ExtResource("1_yaw10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
