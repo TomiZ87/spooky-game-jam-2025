@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 150.0
 @onready var sprite = $AnimatedSprite2D
 @onready var carried_object = $CarriedObject
+@onready var interaction_area = $interaction_area
 
 var nearby_pickupables: Array = []
 var current_pickupable: Node = null
@@ -15,6 +16,13 @@ func _physics_process(delta: float) -> void:
 	handle_movement_input()
 	move_and_slide()
 	
+func _input(event):
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("mouse_left"):
+		# Look for interactable areas the player is overlapping
+		for area in interaction_area.get_overlapping_areas():
+			if area.has_method("check_interaction"):
+				area.check_interaction()	
+
 func handle_movement_input():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction.x > 0:

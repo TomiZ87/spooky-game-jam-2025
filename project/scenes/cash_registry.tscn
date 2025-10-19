@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5lm8nyiwac01"]
+[gd_scene load_steps=6 format=3 uid="uid://c5lm8nyiwac01"]
 
 [ext_resource type="Texture2D" uid="uid://brjbkwrpwqthk" path="res://assets/sprites/desk.png" id="1_x6irj"]
 [ext_resource type="Texture2D" uid="uid://0j0fvjprrrw4" path="res://assets/sprites/cash_register.png" id="2_osk2g"]
+[ext_resource type="Script" uid="uid://cekvdyb4alhi7" path="res://assets/scripts/cash_register.gd" id="3_wwbbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_osk2g"]
 texture = ExtResource("1_x6irj")
@@ -40,3 +41,4 @@ position = Vector2(0, -9)
 [node name="RegisterArea" type="CollisionPolygon2D" parent="CashRegister/Area2D"]
 position = Vector2(-36, -20)
 polygon = PackedVector2Array(-11, 32, -11, 83, 32, 83, 32, 32)
+script = ExtResource("3_wwbbv")

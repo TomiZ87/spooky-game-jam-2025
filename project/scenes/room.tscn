@@ -60,7 +60,7 @@ position = Vector2(288, 112)
 zoom = Vector2(2, 2)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ffxv4")]
-z_index = 3
+z_index = 999
 position = Vector2(196, 175)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_85yof")]
