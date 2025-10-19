@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtwbyyhc4c4yt"]
+[gd_scene load_steps=4 format=3 uid="uid://dtwbyyhc4c4yt"]
 
 [ext_resource type="Texture2D" uid="uid://bdwsq1st6t5li" path="res://assets/sprites/open-chest-wooden-y1Mkxy5-600.jpg" id="1_oii8l"]
+[ext_resource type="Script" uid="uid://v4ilduq8ksh0" path="res://scenes/chest.gd" id="1_sy5e1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvc4m"]
 
 [node name="chest" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_sy5e1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.9999994, -6.9999995)
@@ -23,3 +25,5 @@ shape = SubResource("RectangleShape2D_qvc4m")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(2, -5)
 shape = SubResource("RectangleShape2D_qvc4m")
+
+[connection signal="body_entered" from="chestbox" to="." method="_on_chestbox_body_entered"]

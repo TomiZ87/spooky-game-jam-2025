@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cs8lsnfnmuro5"]
 
-[ext_resource type="Script" uid="uid://ch850oeckbx8c" path="res://scenes/pathfinding_goal.gd" id="1_yaw10"]
+[ext_resource type="Script" uid="uid://ch850oeckbx8c" path="res://assets/scripts/pathfinding_goal.gd" id="1_yaw10"]
 [ext_resource type="Texture2D" uid="uid://cigop2noguyi8" path="res://assets/sprites/images.steamusercontent.jpg" id="2_enss4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk5fv"]
