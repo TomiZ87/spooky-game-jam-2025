@@ -74,7 +74,6 @@ func handle_pickup():
 		picked_up.pickup()
 		carrying = true
 		carried_object.carry(picked_up)
-		#picked_up = null
 
 func get_closest_interactable():
 	var closest = null
@@ -89,6 +88,5 @@ func get_closest_interactable():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "chestbox":
-		print("borde droppa")
 		carried_object.drop(self)
 		
