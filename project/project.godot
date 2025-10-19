@@ -19,3 +19,5 @@ config/icon="res://icon.svg"
 
 pathfind_placeholder=""
 npc=""
+chest_area=""
+door=""
